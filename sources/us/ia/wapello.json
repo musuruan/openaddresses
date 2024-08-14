@@ -1,20 +1,20 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "19189",
-            "name": "Winnebago County",
+            "geoid": "19179",
+            "name": "Wapello County",
             "state": "Iowa"
         },
         "country": "us",
         "state": "ia",
-        "county": "Winnebago"
+        "county": "Wapello"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/WinnebagoCountyIA_WFS/MapServer/17",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/WapelloCountyIA_WFS/MapServer/4",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
@@ -22,15 +22,18 @@
                 },
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "HOUSE_NUMBER",
-                    "street": "Location",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "HOUSENUM"
+                    },
+                    "street": "ADDRESS",
                     "unit": {
                         "function": "postfixed_unit",
-                        "field": "ADDRESS"
+                        "field": "HOUSENUM"
                     },
-                    "city": "SitusCityName",
-                    "region": "SitusStateName",
-                    "postcode": "SitusPostalCode",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
                     "format": "geojson"
                 }
             }
@@ -38,7 +41,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/WinnebagoCountyIA_WFS/MapServer/12",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/WapelloCountyIA_WFS/MapServer/0",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
@@ -46,7 +49,7 @@
                 },
                 "protocol": "ESRI",
                 "conform": {
-                    "pid": "Parcelid",
+                    "pid": "PIN",
                     "format": "geojson"
                 }
             }
